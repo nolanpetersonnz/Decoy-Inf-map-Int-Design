@@ -1,0 +1,198 @@
+provider,data_gb,unlimited,price_gbp_month,contract_months,offer_notes,source,collected,verification_url,verified,,data_gb,price_actual,expected_price,,,,,provider,data_gb,price_gbp,delta_vs_curve
+ASDA Mobile,25,0,14,12,,https://www.asdamobile.com/pay-monthly-sim-only/12-month,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only/12-month,y,,1,1,5.848862972,,log-fit expected utility model,,,iD Mobile,50,7,-6.353845674
+ASDA Mobile,10,0,8,12,,https://www.asdamobile.com/pay-monthly-sim-only/12-month,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only/12-month,y,,1,16,5.848862972,,a (intercept),5.848862972,,iD Mobile (mobiles.co.uk),50,7,-6.353845674
+ASDA Mobile,100,0,18,12,,https://www.asdamobile.com/pay-monthly-sim-only/12-month,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only/12-month,y,,2,5,7.178624478,,b (slope),1.918440329,,iD Mobile (mobiles.co.uk),25,6,-6.024084169
+ASDA Mobile,,1,22,12,,https://www.asdamobile.com/pay-monthly-sim-only/12-month,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only/12-month,y,,2,6,7.178624478,,R2,0.312913882,,iD Mobile,40,7,-5.925758086
+,,,,,,,,,,,3,5,7.956485093,,capped plans,162,,iD Mobile,40,7,-5.925758086
+,,,,,,,,,,,3,4,7.956485093,,unlimited plans,25,,Talkmobile,60,7.95,-5.753618701
+giffgaff,50,0,12,18,,,,,y,,3,5,7.956485093,,,,,iD Mobile,60,8,-5.703618701
+giffgaff,100,0,15,18,,,,,y,,3,5,7.956485093,,,,,iD Mobile (mobiles.co.uk),60,8,-5.703618701
+giffgaff,200,0,20,18,,,,,y,,3,24,7.956485093,,,,,iD Mobile,20,6,-5.595996581
+ASDA Mobile,3,0,5,12,Vodafone network,msm-cheap,2026-08-16,https://www.asdamobile.com/pay-monthly-sim-only,y,,3,21,7.956485093,,,,,iD Mobile,20,6,-5.595996581
+giffgaff,6,0,8,18,no annual price rise,msm-cheap,2026-08-16,https://www.giffgaff.com/sim-only-deals,y,,3,18,7.956485093,,,,,iD Mobile,20,6,-5.595996581
+giffgaff,25,0,10,18,no annual price rise,msm-cheap,2026-08-16,https://www.giffgaff.com/sim-only-deals,y,,3,5,7.956485093,,,,,Talkmobile,30,6.95,-5.423857196
+giffgaff,,1,14,18,"limited-time price, was £25; fair usage policy",msm-cheap;msm-unl,2026-08-16,https://www.giffgaff.com/sim-only-deals,y,,3,5,7.956485093,,,,,Lebara,50,7.95,-5.403845674
+iD Mobile,20,0,6,12,no annual price rise,msm-cheap,2026-08-16,https://www.idmobile.co.uk/sim-only-deals,y,,4,12.5,8.508385983,,,,,iD Mobile,30,7,-5.373857196
+iD Mobile,20,0,6,1,no annual price rise,msm-cheap;cmm;msm-main,2026-08-16,https://www.idmobile.co.uk/sim-only-deals,y,,4,11.5,8.508385983,,,,,iD Mobile,50,8,-5.353845674
+iD Mobile,40,0,8,1,no annual price rise; ~30GB roaming,msm-cheap;msm-main,2026-08-16,https://www.idmobile.co.uk/sim-only-deals,y,,4,11.25,8.508385983,,,,,Vodafone (mobiles.co.uk),50,8,-5.353845674
+iD Mobile (mobiles.co.uk),,1,15,12,no cashback listed; giffgaff not sold by mobiles.co.uk,msm-unl,2026-08-16,https://www.mobiles.co.uk/sim-only,y,,4,13,8.508385983,,,,,iD Mobile (mobiles.co.uk),50,8,-5.353845674
+Lebara,5,0,4.95,1,intro £1.48 months 1-3; Vodafone network,msm-cheap;cmm,2026-08-16,https://mobile.lebara.com/gb/en/sim-only,,,5,4.95,8.936473571,,,,,Talkmobile,80,8.95,-5.305519591
+Lebara,10,0,5.95,1,intro £2.38 months 1-3; Vodafone network,msm-cheap;cmm,2026-08-16,https://mobile.lebara.com/gb/en/sim-only,,,5,4.9,8.936473571,,,,,Talkmobile,15,5.95,-5.094095691
+Lebara,20,0,6.95,1,intro £2.78 months 1-3; Vodafone network,msm-cheap;cmm,2026-08-16,https://mobile.lebara.com/gb/en/sim-only,,,5,8,8.936473571,,,,,iD Mobile (mobiles.co.uk),120,10,-5.033380206
+Lebara,50,0,7.95,1,intro £3.18 months 1-3; EU roaming,msm-cheap;msm-main,2026-08-16,https://mobile.lebara.com/gb/en/sim-only,,,5,12,8.936473571,,,,,iD Mobile (mobiles.co.uk),120,10,-5.033380206
+Lebara,100,0,11.95,1,intro £4.78 months 1-3; Vodafone network,msm-cheap,2026-08-16,https://mobile.lebara.com/gb/en/sim-only,,,5,6,8.936473571,,,,,SMARTY,70,9,-4.999347582
+Mozillion,3,0,4,24,uncapped speeds,msm-cheap;cmm,2026-08-16,https://www.mozillion.com/sim/pay-monthly-sim,y,,5,19,8.936473571,,,,,Vodafone (Fonehouse),40,7.95,-4.975758086
+O2,150,0,20,24,offer ends 2 Sep; rises to £22.50 Apr 2027 and £25 Apr 2028; double data for Virgin Media (Volt),msm-cheap;cmm,2026-08-16,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,5,7.5,8.936473571,,,,,iD Mobile,40,8,-4.925758086
+Rewild,,1,22,1,"£21 on 12-month, £20 on 24-month; Three & Vodafone networks",msm-unl,2026-08-16,https://rewildmobile.com/get-everyday-sim,y,,6,8,9.286246598,,,,,iD Mobile,110,10,-4.866454072
+Sky Mobile,1,0,1,12,"promo, was £8; 12-month min term",cmm;msm-main,2026-08-16,https://www.sky.com/shop/mobile/plans,y,,8,8,9.838147488,,,,,Sky Mobile,1,1,-4.848862972
+Sky Mobile,75,0,23,12,,cmm;msm-main,2026-08-16,https://www.sky.com/shop/mobile/plans,y,,10,8,10.26623508,,,,,Talkmobile,100,9.95,-4.733607179
+Sky Mobile,,1,21,12,"promo, was £30; roaming £2/day in 120 destinations",msm-unl,2026-08-16,https://www.sky.com/shop/mobile/plans,y,,10,5.95,10.26623508,,,,,Talkmobile,100,9.95,-4.733607179
+SMARTY,2,0,5,1,data-only plan (no calls/texts); no annual price rise,msm-cheap,2026-08-16,https://smarty.co.uk/select-plan,y,,10,7,10.26623508,,,,,Vodafone (mobiles.co.uk),60,9,-4.703618701
+SMARTY,16,0,8,1,EU roaming,msm-cheap;cmm;msm-main,2026-08-16,https://smarty.co.uk/select-plan,y,,10,7,10.26623508,,,,,iD Mobile,100,10,-4.683607179
+SMARTY,70,0,9,1,EU roaming,msm-cheap,2026-08-16,https://smarty.co.uk/select-plan,y,,10,6,10.26623508,,,,,Vodafone (mobiles.co.uk),35,8,-4.669586077
+SMARTY,,1,20,1,rolling monthly; no intro offer,msm-unl,2026-08-16,https://smarty.co.uk/select-plan,y,,10,16,10.26623508,,,,,Lebara,20,6.95,-4.645996581
+Spusu,5,0,4.9,1,EE network,msm-cheap;cmm,2026-08-16,https://www.spusu.co.uk/plans,y,,10,15.5,10.26623508,,,,,iD Mobile,12,6,-4.616008103
+Spusu,15,0,6.9,1,EE network; special deal until 20/08/26,cmm,2026-08-16,https://www.spusu.co.uk/plans,y,,10,15.25,10.26623508,,,,,iD Mobile,90,10,-4.481479317
+Spusu,20,0,8.9,1,EE network,msm-cheap;cmm,2026-08-16,https://www.spusu.co.uk/plans,y,,10,7,10.26623508,,,,,Mozillion,30,8,-4.373857196
+Talkmobile,15,0,5.95,1,Vodafone network (not EE),msm-cheap,2026-08-16,https://www.talkmobile.co.uk/sim-only-deals,y,,10,10,10.26623508,,,,,Lebara,10,5.95,-4.316235076
+Talkmobile,30,0,6.95,1,EU roaming 47 destinations; Vodafone network,msm-cheap,2026-08-16,https://www.talkmobile.co.uk/sim-only-deals,y,,12,6,10.6160081,,,,,Mozillion,10,6,-4.266235076
+Talkmobile,150,0,11.95,12,£5.97 for first 3 months; no unlimited plan offered,msm-unl,2026-08-16,https://www.talkmobile.co.uk/sim-only-deals,y,,12,9,10.6160081,,,,,iD Mobile,80,10,-4.255519591
+Three,,1,20,24,24-month Lite plan; rises to £22.30 Apr 2027 and £24.60 Apr 2028,msm-unl,2026-08-16,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,15,6.9,11.04409569,,,,,Mozillion,80,10,-4.255519591
+Three (Fonehouse),,1,17,12,£35 auto cashback; rises to £19.30 Apr 2027,msm-unl,2026-08-16,https://www.fonehouse.co.uk/sim-only-deals,y,,15,5.95,11.04409569,,,,,Spusu,15,6.9,-4.144095691
+Vodafone,120,0,21,24,speed capped 100Mbps; rises Apr 2027 and Apr 2028; no 12-month SIM-only offered,msm-cheap;cmm,2026-08-16,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,15,9,11.04409569,,,,,Vodafone (Fonehouse),15,6.95,-4.094095691
+Vodafone,100,0,24,24,rises Apr 2027 and Apr 2028,msm-cheap,2026-08-16,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,15,6.95,11.04409569,,,,,Spusu,5,4.9,-4.036473571
+Vodafone,,1,26,24,Unlimited Plus; £28.50 Apr 2027 and £31 Apr 2028,msm-unl,2026-08-16,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,16,8,11.16790899,,,,,Lebara,5,4.95,-3.986473571
+Vodafone (mobiles.co.uk),60,0,11,24,£96 cashback by redemption; EE not sold by mobiles.co.uk,msm-unl,2026-08-16,https://www.mobiles.co.uk/sim-only,y,,20,6,11.59599658,,,,,Mozillion,3,4,-3.956485093
+VOXI,20,0,10,1,unlimited social media on 7 apps; price locked,msm-cheap;cmm,2026-08-16,https://www.voxi.co.uk/sim-only-plans,y,,20,6,11.59599658,,,,,iD Mobile,175,12,-3.757196675
+Zable,,1,20,1,30-day rolling; Vodafone network; 10GB roaming,msm-unl,2026-08-16,https://zable.co.uk/mobile-plans,y,,20,6.95,11.59599658,,,,,Talkmobile,150,11.95,-3.511467794
+iD Mobile,30,0,7,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,8.9,11.59599658,,,,,iD Mobile,150,12,-3.461467794
+iD Mobile,80,0,10,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,10,11.59599658,,,,,iD Mobile,150,12,-3.461467794
+iD Mobile,120,0,12,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,6,11.59599658,,,,,Mozillion,30,9,-3.373857196
+iD Mobile,200,0,14,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,10,11.59599658,,,,,ASDA Mobile,10,7,-3.266235076
+iD Mobile,250,0,15,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,27,11.59599658,,,,,Mozillion,10,7,-3.266235076
+iD Mobile,300,0,16,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,24,11.59599658,,,,,Sky Mobile,10,7,-3.266235076
+iD Mobile,,1,18,1,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,21,11.59599658,,,,,Mozillion,80,11,-3.255519591
+iD Mobile,40,0,7,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,20,14,11.59599658,,,,,SMARTY,16,8,-3.167908993
+iD Mobile,50,0,8,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,14,12.02408417,,,,,Vodafone (Fonehouse),120,11.95,-3.083380206
+iD Mobile,90,0,10,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,10,12.02408417,,,,,iD Mobile,120,12,-3.033380206
+iD Mobile,150,0,12,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,13,12.02408417,,,,,Spusu,40,9.9,-3.025758086
+iD Mobile,250,0,14,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,6,12.02408417,,,,,ASDA Mobile,3,5,-2.956485093
+iD Mobile,,1,16,12,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,14,12.02408417,,,,,ASDA Mobile,3,5,-2.956485093
+iD Mobile,12,0,6,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,16,12.02408417,,,,,Mozillion,3,5,-2.956485093
+iD Mobile,20,0,6,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,25,21,12.02408417,,,,,Sky Mobile,3,5,-2.956485093
+iD Mobile,40,0,7,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,26,12,12.09932677,,,,,Zable,3,5,-2.956485093
+iD Mobile,50,0,7,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,30,6.95,12.3738572,,,,,SMARTY,5,6,-2.936473571
+iD Mobile,60,0,8,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,30,7,12.3738572,,,,,SMARTY,40,10,-2.925758086
+iD Mobile,100,0,10,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,30,9,12.3738572,,,,,iD Mobile,300,14,-2.791229299
+iD Mobile,110,0,10,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,30,8,12.3738572,,,,,Lebara,100,11.95,-2.733607179
+iD Mobile,150,0,12,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,30,22,12.3738572,,,,,Vodafone (mobiles.co.uk),60,11,-2.703618701
+iD Mobile,175,0,12,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,35,8,12.66958608,,,,,Spusu,20,8.9,-2.695996581
+iD Mobile,250,0,14,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,40,8,12.92575809,,,,,Vodafone (mobiles.co.uk),100,12,-2.683607179
+iD Mobile,300,0,14,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,40,7,12.92575809,,,,,Vodafone (mobiles.co.uk),100,12,-2.683607179
+iD Mobile,,1,15,24,unlimited mins & texts; no annual price rise,site-check,2026-08-17,https://www.idmobile.co.uk/sim-only-deals,y,,40,7,12.92575809,,,,,Mozillion,100,12,-2.683607179
+ASDA Mobile,3,0,5,24,unlimited mins & texts; Vodafone network,site-check,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only,y,,40,18,12.92575809,,,,,SMARTY,100,12,-2.683607179
+ASDA Mobile,10,0,7,24,unlimited mins & texts; Vodafone network,site-check,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only,y,,40,10,12.92575809,,,,,Vodafone (Fonehouse),100,12,-2.683607179
+ASDA Mobile,25,0,13,24,unlimited mins & texts; Vodafone network,site-check,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only,y,,40,13,12.92575809,,,,,iD Mobile,250,14,-2.441456272
+ASDA Mobile,100,0,17,24,unlimited mins & texts; Vodafone network,site-check,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only,y,,40,9.9,12.92575809,,,,,iD Mobile,250,14,-2.441456272
+ASDA Mobile,,1,19,24,unlimited mins & texts; Vodafone network,site-check,2026-08-17,https://www.asdamobile.com/pay-monthly-sim-only,y,,40,12,12.92575809,,,,,ASDA Mobile,10,8,-2.266235076
+giffgaff,2,0,6,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,40,7.95,12.92575809,,,,,SMARTY,2,5,-2.178624478
+giffgaff,5,0,8,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,12,13.35384567,,,,,SMARTY,15,9,-2.044095691
+giffgaff,20,0,10,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,7.95,13.35384567,,,,,giffgaff,25,10,-2.024084169
+giffgaff,26,0,12,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,8,13.35384567,,,,,iD Mobile,200,14,-2.013368684
+giffgaff,50,0,15,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,7,13.35384567,,,,,Vodafone (mobiles.co.uk),70,12,-1.999347582
+giffgaff,100,0,20,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,15,13.35384567,,,,,Vodafone (Fonehouse),70,12,-1.999347582
+giffgaff,,1,20,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,7,13.35384567,,,,,Three (Fonehouse),8,8,-1.838147488
+giffgaff,200,0,25,1,monthly rolling; unlimited calls & texts,site-check,2026-08-17,https://www.giffgaff.com/sim-only-deals,y,,50,8,13.35384567,,,,,Mozillion,100,13,-1.683607179
+iD Mobile (mobiles.co.uk),50,0,7,1,unlimited mins & texts; no annual price rises,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,50,8,13.35384567,,,,,Three (Fonehouse),12,9,-1.616008103
+Vodafone (mobiles.co.uk),50,0,8,12,36 cashback by redemption; rises to 9.50 Apr 2027,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,50,24,13.35384567,,,,,VOXI,20,10,-1.595996581
+Vodafone (mobiles.co.uk),120,0,14,12,66 cashback by redemption; rises to 16.50 Apr 2027,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,50,20,13.35384567,,,,,giffgaff,20,10,-1.595996581
+iD Mobile (mobiles.co.uk),120,0,10,12,66 cashback by redemption,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,50,21,13.35384567,,,,,iD Mobile,250,15,-1.441456272
+Vodafone (mobiles.co.uk),70,0,12,12,48 cashback by redemption,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,60,11,13.7036187,,,,,Zable,5,7.5,-1.436473571
+iD Mobile (mobiles.co.uk),25,0,6,1,unlimited mins & texts,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,60,8,13.7036187,,,,,giffgaff,50,12,-1.353845674
+iD Mobile (mobiles.co.uk),50,0,8,12,60 cashback by redemption,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,60,8,13.7036187,,,,,giffgaff,6,8,-1.286246598
+Vodafone (mobiles.co.uk),100,0,12,12,60 cashback by redemption,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,60,9,13.7036187,,,,,giffgaff,2,6,-1.178624478
+iD Mobile (mobiles.co.uk),120,0,10,12,no cashback,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,60,7.95,13.7036187,,,,,Spusu,70,12.9,-1.099347582
+iD Mobile (mobiles.co.uk),60,0,8,12,no cashback,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,70,9,13.99934758,,,,,Vodafone (mobiles.co.uk),120,14,-1.033380206
+Vodafone (mobiles.co.uk),60,0,9,12,no cashback,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,70,12,13.99934758,,,,,Vodafone (Fonehouse),120,14,-1.033380206
+Vodafone (mobiles.co.uk),100,0,12,12,50 Currys gift card,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,70,12.9,13.99934758,,,,,giffgaff,5,8,-0.9364735706
+Vodafone (mobiles.co.uk),35,0,8,12,no cashback,site-check,2026-08-17,https://www.mobiles.co.uk/sim-only,y,,70,12,13.99934758,,,,,Three,40,12,-0.9257580858
+Mozillion,3,0,5,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,75,23,14.13170629,,,,,iD Mobile,300,16,-0.7912292993
+Mozillion,10,0,7,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,80,10,14.25551959,,,,,SMARTY,150,15,-0.4614677942
+Mozillion,30,0,9,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,80,11,14.25551959,,,,,Zable,10,10,-0.2662350757
+Mozillion,80,0,11,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,80,10,14.25551959,,,,,giffgaff,26,12,-0.09932676655
+Mozillion,100,0,13,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,80,8.95,14.25551959,,,,,Vodafone (Fonehouse),200,16,-0.01336868392
+Mozillion,210,0,17,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,90,10,14.48147932,,,,,SMARTY,40,13,0.0742419142
+Mozillion,260,0,18,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,18,14.68360718,,,,,Spusu,100,14.9,0.2163928212
+Mozillion,310,0,19,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,15,14.68360718,,,,,giffgaff,100,15,0.3163928212
+Mozillion,,1,25,1,unlimited calls & txts; EU roaming; 12-month priced same as 1-month,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,11.95,14.68360718,,,,,Three (Fonehouse),100,15,0.3163928212
+Mozillion,10,0,6,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,24,14.68360718,,,,,Mozillion,210,17,0.8930302975
+Mozillion,30,0,8,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,10,14.68360718,,,,,Mozillion,210,17,0.8930302975
+Mozillion,80,0,10,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,17,14.68360718,,,,,Three,120,16,0.9666197938
+Mozillion,100,0,12,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,20,14.68360718,,,,,ASDA Mobile,25,13,0.9759158313
+Mozillion,210,0,17,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,12,14.68360718,,,,,SMARTY,200,17,0.9866313161
+Mozillion,260,0,18,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,12,14.68360718,,,,,Mozillion,260,18,1.48330113
+Mozillion,310,0,19,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,13,14.68360718,,,,,Mozillion,260,18,1.48330113
+Mozillion,,1,24,24,unlimited calls & txts; EU roaming,site-check,2026-08-17,https://www.mozillion.com/sim/pay-monthly-sim,y,,100,12,14.68360718,,,,,giffgaff,50,15,1.646154326
+O2,3,0,24,1,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,31,14.68360718,,,,,ASDA Mobile,25,14,1.975915831
+O2,20,0,27,1,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,28,14.68360718,,,,,Three,25,14,1.975915831
+O2,100,0,31,1,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,25,14.68360718,,,,,Mozillion,310,19,2.145865382
+O2,,1,38,1,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,12,14.68360718,,,,,Mozillion,310,19,2.145865382
+O2,3,0,21,12,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,17,14.68360718,,,,,ASDA Mobile,100,17,2.316392821
+O2,20,0,24,12,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,14.9,14.68360718,,,,,SMARTY,100,17,2.316392821
+O2,100,0,28,12,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,9.95,14.68360718,,,,,Zable,20,14,2.404003419
+O2,,1,35,12,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,9.95,14.68360718,,,,,Rewild,4,11.25,2.741614017
+O2,3,0,18,24,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,15,14.68360718,,,,,Three,120,18,2.966619794
+O2,20,0,21,24,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,100,12,14.68360718,,,,,Rewild,4,11.5,2.991614017
+O2,50,0,24,24,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,110,10,14.86645407,,,,,Sky Mobile,5,12,3.063526429
+O2,100,0,25,24,Classic plan; unlimited mins & texts; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,120,21,15.03338021,,,,,ASDA Mobile,100,18,3.316392821
+O2,,1,23,24,Classic plan; offer ends 2 Sep; rises each April,site-check,2026-08-17,https://www.o2.co.uk/shop/sim-cards/sim-only-deals,y,,120,12,15.03338021,,,,,Three,25,16,3.975915831
+Rewild,4,0,12.5,1,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,14,15.03338021,,,,,giffgaff,200,20,3.986631316
+Rewild,4,0,11.5,12,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,10,15.03338021,,,,,Rewild,4,12.5,3.991614017
+Rewild,4,0,11.25,24,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,10,15.03338021,,,,,Three,4,13,4.491614017
+Rewild,10,0,16,1,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,16,15.03338021,,,,,O2,150,20,4.538532206
+Rewild,10,0,15.5,12,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,18,15.03338021,,,,,Three,150,20,4.538532206
+Rewild,10,0,15.25,24,unlimited UK calls & texts; Three & Vodafone networks; no mid-contract rises,site-check,2026-08-17,https://rewildmobile.com/get-everyday-sim,y,,120,14,15.03338021,,,,,Rewild,10,15.25,4.983764924
+Sky Mobile,3,0,5,12,"data-only plan (calls/texts extra); promo, was 10",site-check,2026-08-17,https://www.sky.com/shop/mobile/plans,y,,120,11.95,15.03338021,,,,,Sky Mobile,40,18,5.074241914
+Sky Mobile,5,0,12,12,data-only plan (calls/texts extra),site-check,2026-08-17,https://www.sky.com/shop/mobile/plans,y,,150,20,15.46146779,,,,,Rewild,10,15.5,5.233764924
+Sky Mobile,10,0,7,12,data-only plan (calls/texts extra),site-check,2026-08-17,https://www.sky.com/shop/mobile/plans,y,,150,11.95,15.46146779,,,,,giffgaff,100,20,5.316392821
+Sky Mobile,40,0,18,12,data-only plan (calls/texts extra),site-check,2026-08-17,https://www.sky.com/shop/mobile/plans,y,,150,12,15.46146779,,,,,Rewild,10,16,5.733764924
+Sky Mobile,50,0,20,12,data-only plan (calls/texts extra),site-check,2026-08-17,https://www.sky.com/shop/mobile/plans,y,,150,12,15.46146779,,,,,Vodafone,120,21,5.966619794
+SMARTY,5,0,6,1,unlimited calls & texts; rolling monthly,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,150,15,15.46146779,,,,,Three,150,22,6.538532206
+SMARTY,40,0,10,1,unlimited calls & texts; rolling monthly,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,150,20,15.46146779,,,,,Three,250,23,6.558543728
+SMARTY,100,0,12,1,unlimited calls & texts; rolling monthly,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,150,22,15.46146779,,,,,Sky Mobile,50,20,6.646154326
+SMARTY,150,0,15,1,unlimited calls & texts,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,150,25,15.46146779,,,,,Vodafone,50,21,7.646154326
+SMARTY,200,0,17,1,unlimited calls & texts; rolling monthly,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,175,12,15.75719668,,,,,Three,250,25,8.558543728
+SMARTY,15,0,9,1,data-only plan (no calls/texts),site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,200,20,16.01336868,,,,,Sky Mobile,75,23,8.868293711
+SMARTY,40,0,13,1,data-only plan (no calls/texts),site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,200,14,16.01336868,,,,,Three,25,21,8.975915831
+SMARTY,100,0,17,1,data-only plan,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,200,25,16.01336868,,,,,giffgaff,200,25,8.986631316
+SMARTY,,1,20,1,data-only unlimited plan,site-check,2026-08-17,https://smarty.co.uk/select-plan,y,,200,17,16.01336868,,,,,Vodafone,100,24,9.316392821
+Spusu,40,0,9.9,1,EE network; unlimited mins; EU roaming,site-check,2026-08-17,https://www.spusu.co.uk/plans,y,,200,16,16.01336868,,,,,O2,20,21,9.404003419
+Spusu,70,0,12.9,1,EE network; unlimited mins; EU roaming,site-check,2026-08-17,https://www.spusu.co.uk/plans,y,,200,29,16.01336868,,,,,Vodafone,150,25,9.538532206
+Spusu,100,0,14.9,1,EE network; unlimited mins; EU roaming,site-check,2026-08-17,https://www.spusu.co.uk/plans,y,,210,17,16.1069697,,,,,Vodafone,30,22,9.626142804
+Talkmobile,60,0,7.95,1,Vodafone network; unlimited mins & texts,site-check,2026-08-17,https://www.talkmobile.co.uk/sim-only-deals,y,,210,17,16.1069697,,,,,O2,3,18,10.04351491
+Talkmobile,80,0,8.95,1,Vodafone network; unlimited mins & texts,site-check,2026-08-17,https://www.talkmobile.co.uk/sim-only-deals,y,,250,15,16.44145627,,,,,Vodafone,5,19,10.06352643
+Talkmobile,100,0,9.95,1,Vodafone network; unlimited mins & texts,site-check,2026-08-17,https://www.talkmobile.co.uk/sim-only-deals,y,,250,14,16.44145627,,,,,Vodafone,1,16,10.15113703
+Talkmobile,100,0,9.95,12,Vodafone network; 4.98 for first 3 months,site-check,2026-08-17,https://www.talkmobile.co.uk/sim-only-deals,y,,250,14,16.44145627,,,,,O2,100,25,10.31639282
+Three,4,0,13,24,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,250,23,16.44145627,,,,,O2,50,24,10.64615433
+Three,25,0,14,24,Lite plan; rises to £14.80 Apr 2027 and £16.60 Apr 2028,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,250,25,16.44145627,,,,,O2,20,24,12.40400342
+Three,40,0,12,24,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,260,18,16.51669887,,,,,Vodafone,200,29,12.98663132
+Three,120,0,16,24,Lite plan; rises to £18.30 Apr 2027 and £20.60 Apr 2028,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,260,18,16.51669887,,,,,O2,3,21,13.04351491
+Three,150,0,20,24,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,300,16,16.7912293,,,,,O2,100,28,13.31639282
+Three,250,0,23,24,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,300,14,16.7912293,,,,,O2,20,27,15.40400342
+Three,25,0,16,12,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,310,19,16.85413462,,,,,O2,3,24,16.04351491
+Three,120,0,18,12,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,310,19,16.85413462,,,,,O2,100,31,16.31639282
+Three,150,0,22,12,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three,250,0,25,12,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three,,1,31,12,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three,25,0,21,1,Lite plan; unlimited calls & texts,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three,,1,36,1,Lite plan,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three,,1,25,1,Value plan; rolling monthly,site-check,2026-08-17,https://www.three.co.uk/shop/sim-only/pay-monthly,y,,,,,,,,,,,,
+Three (Fonehouse),8,0,8,24,Three; 25 cashback; rises to 9.90 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Three (Fonehouse),100,0,15,12,Three; 48 auto cashback; rises to 17.30 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),70,0,12,12,Vodafone RED; rises to 14.50 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),120,0,14,12,Vodafone RED; rises to 16.50 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),15,0,6.95,12,Vodafone Savvy; no price rise listed,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),100,0,12,12,Vodafone Basics; rises to 13.50 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),200,0,16,12,Vodafone RED; 5 auto cashback; rises to 18.50 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),40,0,7.95,12,Vodafone Savvy; no price rise listed,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Three (Fonehouse),12,0,9,12,Three; 12 auto cashback; rises to 10.90 Apr 2027,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone (Fonehouse),120,0,11.95,12,Vodafone Savvy; 10 auto cashback,site-check,2026-08-17,https://www.fonehouse.co.uk/sim-only-deals,y,,,,,,,,,,,,
+Vodafone,1,0,16,24,speed capped 100Mbps; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+Vodafone,5,0,19,24,speed capped 100Mbps; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+Vodafone,30,0,22,24,speed capped 100Mbps; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+Vodafone,50,0,21,24,Red plan; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+Vodafone,150,0,25,24,Red plan; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+Vodafone,200,0,29,24,speed capped 100Mbps; rises Apr 2027 and Apr 2028,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+unlimited calls & texts,,,,,,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.vodafone.co.uk/sim-only/best-sim-only-deals,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.voxi.co.uk/sim-only-plans,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.voxi.co.uk/sim-only-plans,y,,,,,,,,,,,,
+,,,,,,site-check,2026-08-17,https://www.voxi.co.uk/sim-only-plans,y,,,,,,,,,,,,
+VOXI,,1,35,1,unlimited data; price locked,site-check,2026-08-17,https://www.voxi.co.uk/sim-only-plans,y,,,,,,,,,,,,
+Zable,3,0,5,1,30-day rolling; Vodafone network,site-check,2026-08-17,https://zable.co.uk/mobile-plans,y,,,,,,,,,,,,
+Zable,5,0,7.5,1,30-day rolling; Vodafone network,site-check,2026-08-17,https://zable.co.uk/mobile-plans,y,,,,,,,,,,,,
+Zable,10,0,10,1,30-day rolling; Vodafone network,site-check,2026-08-17,https://zable.co.uk/mobile-plans,y,,,,,,,,,,,,
+Zable,20,0,14,1,30-day rolling; Vodafone network,site-check,2026-08-17,https://zable.co.uk/mobile-plans,y,,,,,,,,,,,,
