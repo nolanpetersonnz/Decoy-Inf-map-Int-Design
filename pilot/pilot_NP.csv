@@ -1,0 +1,16 @@
+pid,version,idx,series,vary_gb,vary_price,anchor_left,chose
+NP,pilot-v1.0 (2026-08-21),0,1,200,19,0,vary
+NP,pilot-v1.0 (2026-08-21),1,2,50,10,1,anchor
+NP,pilot-v1.0 (2026-08-21),2,1,200,25,1,anchor
+NP,pilot-v1.0 (2026-08-21),3,1,200,23,0,vary
+NP,pilot-v1.0 (2026-08-21),4,2,50,8,1,vary
+NP,pilot-v1.0 (2026-08-21),5,1,200,31,0,anchor
+NP,pilot-v1.0 (2026-08-21),6,1,200,21,1,vary
+NP,pilot-v1.0 (2026-08-21),7,2,50,16,1,anchor
+NP,pilot-v1.0 (2026-08-21),8,2,50,12,0,anchor
+NP,pilot-v1.0 (2026-08-21),9,1,200,29,0,anchor
+NP,pilot-v1.0 (2026-08-21),10,2,50,14,0,anchor
+NP,pilot-v1.0 (2026-08-21),11,1,200,33,0,anchor
+NP,pilot-v1.0 (2026-08-21),12,1,200,27,0,anchor
+# s1_switch(200GB)=£24.00
+# s2_switch(50GB)=£9.00
