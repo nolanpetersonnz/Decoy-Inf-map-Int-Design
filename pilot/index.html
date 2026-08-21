@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlanFinder — quick plan survey</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#5b6b7e; --blue:#2a78d6; --bg:#f4f6f9;
+          --card:#ffffff; --line:#d8e0ea; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Arial,sans-serif;
+         background:var(--bg); color:var(--ink); }
+  header { background:#fff; border-bottom:1px solid var(--line);
+           padding:14px 24px; display:flex; align-items:baseline; gap:14px; }
+  header .logo { font-weight:800; font-size:20px; color:var(--blue); }
+  header .tag { color:var(--muted); font-size:13px; }
+  main { max-width:720px; margin:0 auto; padding:28px 20px; }
+  h2 { font-size:22px; margin:0 0 12px; }
+  p { color:var(--muted); font-size:15px; line-height:1.5; }
+  .prompt { text-align:center; font-size:17px; color:var(--ink);
+            margin:6px 0 22px; }
+  .cards { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .plan { background:var(--card); border:1px solid var(--line);
+          border-radius:10px; padding:18px 14px; width:200px;
+          text-align:center; cursor:pointer; }
+  .plan:hover { border-color:var(--blue);
+                box-shadow:0 2px 10px rgba(42,120,214,.15); }
+  .plan .gb { font-size:30px; font-weight:800; margin:10px 0 2px; }
+  .plan .gbu { font-size:13px; color:var(--muted); }
+  .plan .price { font-size:22px; font-weight:700; margin:10px 0 2px;
+                 color:var(--blue); }
+  .plan .per { font-size:12px; color:var(--muted); }
+  .plan button { margin-top:12px; background:var(--blue); color:#fff;
+                 border:none; border-radius:6px; padding:8px 18px;
+                 font-size:14px; font-weight:600; cursor:pointer; }
+  .btn { background:var(--blue); color:#fff; border:none; border-radius:6px;
+         padding:10px 22px; font-size:15px; font-weight:600; cursor:pointer; }
+  input[type=text] { font-size:15px; padding:8px 10px;
+    border:1px solid var(--line); border-radius:6px; width:100%;
+    max-width:320px; }
+  .result { background:#fff; border:1px solid var(--line); border-radius:10px;
+            padding:18px 22px; font-size:15px; }
+  #robot-report { font-family:Consolas,monospace; font-size:13px;
+    white-space:pre-wrap; background:#fff; border:1px solid var(--line);
+    border-radius:8px; padding:16px; }
+  .pass { color:#0a7a0a; font-weight:700; } .fail { color:#c22; font-weight:700; }
+</style>
+</head>
+<body>
+<header><span class="logo">PlanFinder</span>
+  <span class="tag">2-minute plan survey · 12-month plans · unlimited calls &amp; texts</span></header>
+<main id="main"></main>
+
+<script>
+"use strict";
+/* Titration pilot: pins the cohort indifference line before the main
+   task's targets freeze. 13 forced choices, shuffled order, random
+   screen side. Robot self-test: index.html?robot=1                    */
+
+const CONFIG = {
+  version: "pilot-v1.0 (2026-08-21)",
+  study_seed: "decoy-pilot-2026",
+  anchor: { gb: 100, price: 17.00 },
+  s1_prices: [19, 21, 23, 25, 27, 29, 31, 33],   // 200GB at these prices
+  s1_gb: 200,
+  s2_prices: [8, 10, 12, 14, 16],                // 50GB at these prices
+  s2_gb: 50,
+};
+
+function hashStr(s) { let h = 1779033703; for (let i = 0; i < s.length; i++) {
+    h = Math.imul(h ^ s.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19);
+  } return h >>> 0; }
+function mulberry32(a) { return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+let rng = Math.random;
+function shuffle(arr) { const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a; }
+
+const params = new URLSearchParams(location.search);
+const ROBOT = params.get("robot");
+let pid = params.get("pid") || (ROBOT ? "ROBOT" : "");
+let trials = [], ti = 0, rows = [];
+const main = document.getElementById("main");
+
+function buildTrials() {
+  const T = [];
+  CONFIG.s1_prices.forEach(p => T.push({ series: 1,
+    vary: { gb: CONFIG.s1_gb, price: p } }));
+  CONFIG.s2_prices.forEach(p => T.push({ series: 2,
+    vary: { gb: CONFIG.s2_gb, price: p } }));
+  const S = shuffle(T);
+  S.forEach((t, i) => { t.idx = i; t.anchorLeft = rng() < 0.5; });
+  return S;
+}
+
+function screenIntro() {
+  main.innerHTML = `<h2>Quick plan survey (~2 minutes)</h2>
+  <p>You'll see 13 pairs of SIM-only plans. For each pair, choose the one
+  you would actually pick for yourself. All plans are 12-month contracts
+  with unlimited calls &amp; texts. There are no right answers.</p>
+  <p>Your initials or a nickname:</p>
+  <input type="text" id="pid" autocomplete="off" placeholder="e.g. JS">
+  <br><br><button class="btn" id="go">Start</button>`;
+  document.getElementById("go").onclick = () => {
+    const v = document.getElementById("pid").value.trim();
+    if (!v) return;
+    pid = v; start();
+  };
+}
+
+function start() {
+  rng = mulberry32(hashStr(pid + "|" + CONFIG.study_seed));
+  trials = buildTrials();
+  screenTrial();
+}
+
+function card(o) {
+  return `<div class="plan" data-gb="${o.gb}">
+    <div class="gb">${o.gb}<span class="gbu"> GB</span></div>
+    <div class="gbu">data per month</div>
+    <div class="price">£${o.price.toFixed(2)}</div>
+    <div class="per">per month</div><button>Choose</button></div>`;
+}
+
+function screenTrial() {
+  if (ti >= trials.length) return screenDone();
+  const t = trials[ti];
+  const opts = t.anchorLeft ? [CONFIG.anchor, t.vary]
+                            : [t.vary, CONFIG.anchor];
+  main.innerHTML = `<p class="prompt">Which plan would you choose?
+    <span style="color:#5b6b7e">(${ti + 1}/${trials.length})</span></p>
+    <div class="cards">${opts.map(card).join("")}</div>`;
+  document.querySelectorAll(".plan").forEach(el =>
+    el.onclick = () => {
+      const gb = Number(el.dataset.gb);
+      rows.push({ pid, version: CONFIG.version, idx: t.idx,
+        series: t.series, vary_gb: t.vary.gb, vary_price: t.vary.price,
+        anchor_left: t.anchorLeft ? 1 : 0,
+        chose: gb === CONFIG.anchor.gb ? "anchor" : "vary" });
+      ti++;
+      if (!ROBOT) screenTrial();
+    });
+}
+
+/* Switch-point: prices ascending; expect "vary" chosen while it's cheap
+   (series 1: the bigger plan; series 2: the smaller-cheaper plan), then
+   "anchor" once the varying price passes their threshold. */
+function switchPoint(series, prices) {
+  const ch = prices.map(p => rows.find(r =>
+    r.series === series && r.vary_price === p).chose);
+  const firstAnchor = ch.indexOf("anchor"), lastVary = ch.lastIndexOf("vary");
+  if (lastVary === -1) return { label: "< £" + prices[0], value: prices[0] - 1 };
+  if (firstAnchor === -1) return { label: "> £" + prices[prices.length - 1],
+    value: prices[prices.length - 1] + 1 };
+  if (firstAnchor < lastVary) return { label: "inconsistent (" +
+    ch.join(",") + ")", value: null };
+  return { label: "£" + ((prices[lastVary] + prices[firstAnchor]) / 2).toFixed(2),
+    value: (prices[lastVary] + prices[firstAnchor]) / 2 };
+}
+
+function toCSV() {
+  const cols = ["pid","version","idx","series","vary_gb","vary_price",
+    "anchor_left","chose"];
+  return cols.join(",") + "\n" +
+    rows.map(r => cols.map(c => r[c]).join(",")).join("\n");
+}
+
+function screenDone() {
+  const s1 = switchPoint(1, CONFIG.s1_prices);
+  const s2 = switchPoint(2, CONFIG.s2_prices);
+  const blob = new Blob([toCSV() +
+    `\n# s1_switch(200GB)=${s1.label}\n# s2_switch(50GB)=${s2.label}\n`],
+    { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "pilot_" + pid + ".csv"; a.click();
+  main.innerHTML = `<div class="result"><h2>Done — thank you.</h2>
+  <p>Given 100GB at £17, your answers put:</p>
+  <p><b>200GB</b> as worth about <b>${s1.label}</b> per month<br>
+     <b>50GB</b> as worth about <b>${s2.label}</b> per month</p>
+  <p>A file <b>pilot_${pid}.csv</b> was saved to Downloads —
+  please send it (or a screenshot of this screen) back to Nolan.</p></div>`;
+}
+
+/* ------------------------------------------------ robot self-test */
+function runRobot() {
+  // policy: 200GB worth up to £25; 50GB worth up to £12
+  rng = mulberry32(hashStr(pid + "|" + CONFIG.study_seed));
+  trials = buildTrials();
+  while (ti < trials.length) {
+    const t = trials[ti];
+    const takeVary = t.series === 1 ? t.vary.price <= 25 : t.vary.price <= 12;
+    rows.push({ pid, version: CONFIG.version, idx: t.idx, series: t.series,
+      vary_gb: t.vary.gb, vary_price: t.vary.price,
+      anchor_left: t.anchorLeft ? 1 : 0, chose: takeVary ? "vary" : "anchor" });
+    ti++;
+  }
+  const s1 = switchPoint(1, CONFIG.s1_prices);
+  const s2 = switchPoint(2, CONFIG.s2_prices);
+  const C = [
+    { name: "trial count", detail: rows.length + "/13", pass: rows.length === 13 },
+    { name: "series-1 switch computed", detail: s1.label, pass: s1.value === 26 },
+    { name: "series-2 switch computed", detail: s2.label, pass: s2.value === 13 },
+    { name: "both sides used", detail: "", pass:
+      rows.some(r => r.anchor_left === 1) && rows.some(r => r.anchor_left === 0) },
+    { name: "CSV rectangular", detail: "", pass:
+      toCSV().split("\n").every(l => l.split(",").length === 8) },
+  ];
+  window.__robotReport = C;
+  main.innerHTML = `<h2>Pilot robot self-test</h2><div id="robot-report">` +
+    C.map(c => `<span class="${c.pass ? "pass" : "fail"}">` +
+      `${c.pass ? "PASS" : "FAIL"}</span>  ${c.name}  ${c.detail}`).join("\n") +
+    `</div>`;
+}
+
+if (ROBOT) runRobot(); else screenIntro();
+</script>
+</body>
+</html>
