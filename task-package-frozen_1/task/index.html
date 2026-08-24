@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan choice study</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#5b6b7e; --blue:#2a78d6; --bg:#f4f6f9;
+          --card:#ffffff; --line:#d8e0ea; --accent:#e34948; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Arial,sans-serif;
+         background:var(--bg); color:var(--ink); }
+  #progress { height:4px; background:var(--line); }
+  #bar { height:4px; width:0%; background:var(--blue); transition:width .2s; }
+  main { max-width:880px; margin:0 auto; padding:28px 20px; }
+  h2 { font-size:22px; margin:0 0 12px; }
+  p, li { color:var(--muted); font-size:15px; line-height:1.5; }
+  .prompt { text-align:center; font-size:17px; color:var(--ink);
+            margin:6px 0 22px; }
+  .cards { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .plan { background:var(--card); border:1px solid var(--line);
+          border-radius:10px; padding:18px 14px; width:200px;
+          text-align:center; cursor:pointer; }
+  .plan:hover { border-color:var(--blue); box-shadow:0 2px 10px rgba(42,120,214,.15); }
+  .plan .prov { font-size:13px; font-weight:700; color:var(--muted);
+                letter-spacing:.4px; }
+  .plan .gb { font-size:30px; font-weight:800; margin:10px 0 2px; }
+  .plan .gbu { font-size:13px; color:var(--muted); }
+  .plan .price { font-size:22px; font-weight:700; margin:10px 0 2px;
+                 color:var(--blue); }
+  .plan .per { font-size:12px; color:var(--muted); }
+  .plan .feat { font-size:11.5px; color:var(--muted); margin-top:10px;
+                border-top:1px solid var(--line); padding-top:8px; }
+  .plan button { margin-top:12px; background:var(--blue); color:#fff;
+                 border:none; border-radius:6px; padding:8px 18px;
+                 font-size:14px; font-weight:600; cursor:pointer; }
+  .btn { background:var(--blue); color:#fff; border:none; border-radius:6px;
+         padding:10px 22px; font-size:15px; font-weight:600; cursor:pointer; }
+  .btn:disabled { background:#a8bdd6; cursor:default; }
+  input[type=text], input[type=number], textarea {
+    font-size:15px; padding:8px 10px; border:1px solid var(--line);
+    border-radius:6px; width:100%; max-width:420px; }
+  textarea { max-width:640px; height:80px; }
+  .wtprow { display:flex; align-items:center; gap:14px; margin:12px 0; }
+  .wtprow .lvl { width:120px; font-weight:700; }
+  .wtprow input { max-width:140px; }
+  .notice { background:#fff; border:1px solid var(--line); border-radius:10px;
+            padding:18px 22px; margin-bottom:18px; }
+  #robot-report { font-family:Consolas,monospace; font-size:13px;
+                  white-space:pre-wrap; background:#fff; border:1px solid
+                  var(--line); border-radius:8px; padding:16px; }
+  .pass { color:#0a7a0a; font-weight:700; } .fail { color:#c22; font-weight:700; }
+</style>
+</head>
+<body>
+<div id="progress"><div id="bar"></div></div>
+<main id="main"></main>
+
+<script>
+"use strict";
+/* =====================================================================
+   Decoy-mapping experiment task — Nolan Peterson, 2026
+   Self-contained; data never leaves the machine (CSV download at end).
+   Robot self-test:  index.html?robot=cheapest   (also: random, bigdata)
+   ===================================================================== */
+
+const CONFIG = {
+  version: "task-v2.1-FROZEN (2026-08-21)",  // v2.1: UI debrand only; design unchanged
+  study_seed: "decoy-mapping-2026",
+  // Targets: TITRATED cohort-indifference pair (pilot n=5, 21 Aug 2026:
+  // median switch £20 for 200GB given 100GB@£17; cohort line
+  // price = -6.59 + 3.50*log2(GB)). Matches design/frozen_design.json.
+  A: { gb: 100, price: 17.00 },
+  B: { gb: 200, price: 20.00 },
+  // Six diagnostic decoy cells, re-selected on the titrated line
+  // (design/diagnostic_cells.csv, rounded to marketable values):
+  cells: [
+    { id: "d1", gb: 100, price: 12.00, note: "dominates A" },
+    { id: "d2", gb: 130, price: 14.00, note: "dominates A, toward B" },
+    { id: "d3", gb: 160, price: 24.50, note: "dominated by B" },
+    { id: "d4", gb: 130, price: 22.50, note: "dominated by B, toward A" },
+    { id: "d5", gb: 210, price: 26.50, note: "trade-off beyond B" },
+    { id: "d6", gb:  30, price: 18.00, note: "overpriced far-field" },
+  ],
+  reps_per_cell: 5, n_baseline: 8, n_filler: 4,
+  // real value-segment deals (verified dataset) used as filler stimuli
+  fillers: [ [30,7],[40,7],[50,8],[60,8],[80,10],[90,10],[110,10],[120,12],
+    [150,12],[175,12],[200,14],[250,15],[300,16],[40,10],[70,9],[100,12],
+    [150,15],[200,17],[60,7.95],[80,8.95],[100,9.95],[30,9],[80,11],
+    [100,13],[210,17],[50,7.95],[100,11.95],[40,9.9],[70,12.9],[100,14.9] ],
+  catch_trials: [   // one option strictly dominates both others
+    [[100,8],[20,22],[30,25]], [[150,9],[40,24],[25,19]] ],
+  wtp_levels: [25, 50, 100, 150, 200, 300],
+  iti_ms: 300,
+};
+
+/* ------------------------------------------------ seeded RNG (mulberry32) */
+function hashStr(s) { let h = 1779033703; for (let i = 0; i < s.length; i++) {
+    h = Math.imul(h ^ s.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19);
+  } return h >>> 0; }
+function mulberry32(a) { return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+let rng = Math.random;                       // replaced once pid is known
+function shuffle(arr) { const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a; }
+function pick(arr, n) { return shuffle(arr).slice(0, n); }
+
+/* ------------------------------------------------ state */
+const params = new URLSearchParams(location.search);
+const ROBOT = params.get("robot");           // null | cheapest | random | bigdata
+let pid = params.get("pid") || (ROBOT ? "ROBOT" : "");
+let seed = 0, trials = [], ti = 0, rows = [], t0 = 0, tTrialStart = 0;
+const main = document.getElementById("main");
+
+/* ------------------------------------------------ trial construction */
+function buildTrials() {
+  const T = [];
+  const { A, B } = CONFIG;
+  for (const c of CONFIG.cells)
+    for (let r = 0; r < CONFIG.reps_per_cell; r++)
+      T.push({ block: c.id, opts: [
+        { role: "A", gb: A.gb, price: A.price },
+        { role: "B", gb: B.gb, price: B.price },
+        { role: "D", gb: c.gb, price: c.price } ] });
+  for (let r = 0; r < CONFIG.n_baseline; r++)
+    T.push({ block: "baseline", opts: [
+      { role: "A", gb: A.gb, price: A.price },
+      { role: "B", gb: B.gb, price: B.price } ] });
+  for (let r = 0; r < CONFIG.n_filler; r++) {
+    const three = pick(CONFIG.fillers, 3);
+    T.push({ block: "filler", opts: three.map((d, k) =>
+      ({ role: "F" + (k + 1), gb: d[0], price: d[1] })) });
+  }
+  CONFIG.catch_trials.forEach((c, k) =>
+    T.push({ block: "catch", opts: c.map((d, j) =>
+      ({ role: j === 0 ? "best" : "junk" + j, gb: d[0], price: d[1] })) }));
+  const shuffled = shuffle(T);
+  shuffled.forEach((t, i) => {
+    t.idx = i;
+    t.slots = shuffle(t.opts);               // slot order = display order
+  });
+  return shuffled;
+}
+
+/* ------------------------------------------------ logging */
+function esc(v) { v = String(v ?? ""); return /[",\n]/.test(v)
+  ? '"' + v.replace(/"/g, '""') + '"' : v; }
+function log(row) { rows.push(row); }
+function toCSV() {
+  const cols = ["pid","seed","version","phase","trial_idx","block",
+    "opt1_role","opt1_gb","opt1_price","opt2_role","opt2_gb","opt2_price",
+    "opt3_role","opt3_gb","opt3_price","choice_slot","choice_role",
+    "choice_gb","choice_price","rt_ms","t_ms","response"];
+  return cols.join(",") + "\n" +
+    rows.map(r => cols.map(c => esc(r[c])).join(",")).join("\n");
+}
+function download() {
+  const blob = new Blob([toCSV()], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "decoy_" + pid + ".csv";
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ------------------------------------------------ screens */
+function setBar() { document.getElementById("bar").style.width =
+  (100 * ti / trials.length) + "%"; }
+
+function screenIntro() {
+  main.innerHTML = `
+  <div class="notice"><h2>Choosing the best-value plan</h2>
+  <p>This is a study for a course research project. You'll answer a few
+  quick questions about what mobile data is worth to you, then choose the
+  best-value plan from a series of short comparison lists — about 5–10
+  minutes in total. There are no right or wrong answers; choose whichever
+  plan you would actually pick.</p>
+  <p>Taking part is voluntary and you can stop at any time. Your choices
+  are recorded against an anonymous ID and saved as a file on this
+  computer only — nothing is uploaded. Data are used for a course project
+  supervised at the University of Oxford.</p></div>
+  <p>Your initials:</p>
+  <input type="text" id="pid" autocomplete="off" placeholder="e.g. NP">
+  <p><label><input type="checkbox" id="consent"> I have read the above and
+  agree to take part.</label></p>
+  <button class="btn" id="go">Start</button>`;
+  document.getElementById("go").onclick = () => {
+    const v = document.getElementById("pid").value.trim();
+    if (!v || !document.getElementById("consent").checked) return;
+    pid = v; startSession();
+  };
+}
+
+function startSession() {
+  seed = hashStr(pid + "|" + CONFIG.study_seed);
+  rng = mulberry32(seed);
+  trials = buildTrials();
+  t0 = performance.now();
+  screenWTP();
+}
+
+function screenWTP() {
+  main.innerHTML = `<h2>Before you start</h2>
+  <p>For each monthly data allowance below, enter the <b>highest monthly
+  price (£)</b> you would personally be willing to pay for a 12-month
+  SIM-only plan with unlimited calls &amp; texts.</p>
+  <div id="wtprows"></div><button class="btn" id="go">Continue</button>`;
+  const holder = document.getElementById("wtprows");
+  CONFIG.wtp_levels.forEach((g, i) => {
+    const d = document.createElement("div"); d.className = "wtprow";
+    d.innerHTML = `<span class="lvl">${g} GB</span>
+      <input type="number" min="0" max="60" step="0.5" id="wtp${i}"> £/month`;
+    holder.appendChild(d);
+  });
+  document.getElementById("go").onclick = () => {
+    const vals = CONFIG.wtp_levels.map((g, i) =>
+      document.getElementById("wtp" + i).value);
+    if (vals.some(v => v === "")) return;
+    CONFIG.wtp_levels.forEach((g, i) => log({ pid, seed,
+      version: CONFIG.version, phase: "wtp", block: "wtp", trial_idx: -1,
+      opt1_gb: g, response: vals[i], t_ms: Math.round(performance.now() - t0) }));
+    screenTrial();
+  };
+}
+
+function screenTrial() {
+  if (ti >= trials.length) return screenProbe();
+  if (trials.length > 100 && ti === Math.floor(trials.length / 2) &&
+      !trials[ti].breakShown && !ROBOT) {
+    trials[ti].breakShown = true;
+    main.innerHTML = `<h2>Halfway there</h2><p>Take a short break if you
+      like, then continue.</p><button class="btn" id="go">Continue</button>`;
+    document.getElementById("go").onclick = screenTrial;
+    return;
+  }
+  setBar();
+  const t = trials[ti];
+  main.innerHTML = `<p class="prompt">Which plan is the best value for you?</p>
+    <div class="cards" id="cards"></div>`;
+  const holder = document.getElementById("cards");
+  t.slots.forEach((o, s) => {
+    const d = document.createElement("div"); d.className = "plan";
+    d.innerHTML = `<div class="gb">${o.gb}<span class="gbu"> GB</span></div>
+      <div class="gbu">data per month</div>
+      <div class="price">£${o.price.toFixed(2)}</div>
+      <div class="per">per month</div>
+      <div class="feat">12-month plan · unlimited calls &amp; texts · 5G</div>
+      <button>Choose</button>`;
+    d.onclick = () => choose(s);
+    holder.appendChild(d);
+  });
+  tTrialStart = performance.now();
+}
+
+function choose(slot) {
+  const t = trials[ti], o = t.slots[slot];
+  const row = { pid, seed, version: CONFIG.version, phase: "choice",
+    trial_idx: t.idx, block: t.block,
+    choice_slot: slot, choice_role: o.role, choice_gb: o.gb,
+    choice_price: o.price, rt_ms: Math.round(performance.now() - tTrialStart),
+    t_ms: Math.round(performance.now() - t0) };
+  t.slots.forEach((x, k) => { row["opt" + (k + 1) + "_role"] = x.role;
+    row["opt" + (k + 1) + "_gb"] = x.gb;
+    row["opt" + (k + 1) + "_price"] = x.price; });
+  log(row); ti++;
+  if (ROBOT) return;                          // robot loop advances itself
+  main.innerHTML = ""; setTimeout(screenTrial, CONFIG.iti_ms);
+}
+
+function screenProbe() {
+  main.innerHTML = `<h2>One final question</h2>
+    <p>Did you notice anything about the sets of plans you were shown?</p>
+    <textarea id="q1"></textarea><br><br>
+    <button class="btn" id="go">Finish &amp; save my data</button>`;
+  document.getElementById("go").onclick = () => {
+    log({ pid, seed, version: CONFIG.version,
+      phase: "probe", block: "probe", trial_idx: -2,
+      response: document.getElementById("q1").value,
+      t_ms: Math.round(performance.now() - t0) });
+    download(); screenDone();
+  };
+}
+
+function screenDone() {
+  main.innerHTML = `<h2>Done — thank you.</h2><p>Your data file
+  <b>decoy_${pid}.csv</b> has been saved to this computer's Downloads.
+  Please send it to Nolan.</p>`;
+}
+
+/* ------------------------------------------------ robot self-test */
+function robotPolicy(t) {
+  if (ROBOT === "cheapest")
+    return t.slots.indexOf(t.slots.reduce((m, o) => o.price < m.price ? o : m));
+  if (ROBOT === "bigdata")
+    return t.slots.indexOf(t.slots.reduce((m, o) => o.gb > m.gb ? o : m));
+  return Math.floor(rng() * t.slots.length);   // random
+}
+function runRobot() {
+  pid = pid || "ROBOT"; seed = hashStr(pid + "|" + CONFIG.study_seed);
+  rng = mulberry32(seed); trials = buildTrials(); t0 = performance.now();
+  CONFIG.wtp_levels.forEach(g => log({ pid, seed, version: CONFIG.version,
+    phase: "wtp", block: "wtp", trial_idx: -1, opt1_gb: g,
+    response: (3 + 1.5 * Math.log2(g)).toFixed(2), t_ms: 0 }));
+  while (ti < trials.length) { tTrialStart = performance.now();
+    choose(robotPolicy(trials[ti])); }
+  log({ pid, seed, version: CONFIG.version, phase: "probe", block: "probe",
+    trial_idx: -2, response: "robot probe", t_ms: 0 });
+  const checks = runChecks();
+  window.__robotReport = checks;
+  main.innerHTML = `<h2>Robot self-test — policy: ${ROBOT}</h2>
+    <div id="robot-report">` + checks.map(c =>
+      `<span class="${c.pass ? "pass" : "fail"}">${c.pass ? "PASS" : "FAIL"}` +
+      `</span>  ${c.name} — ${c.detail}`).join("\n") + `\n\nOVERALL: ` +
+    (checks.every(c => c.pass) ? `<span class="pass">ALL CHECKS PASSED</span>`
+      : `<span class="fail">FAILURES PRESENT</span>`) + `</div>`;
+}
+function runChecks() {
+  const C = [], choice = rows.filter(r => r.phase === "choice");
+  const expTotal = CONFIG.cells.length * CONFIG.reps_per_cell +
+    CONFIG.n_baseline + CONFIG.n_filler + CONFIG.catch_trials.length;
+  C.push({ name: "total choice trials", detail: `${choice.length}/${expTotal}`,
+    pass: choice.length === expTotal });
+  for (const c of CONFIG.cells) {
+    const n = choice.filter(r => r.block === c.id).length;
+    C.push({ name: `cell ${c.id} count`, detail: `${n}/${CONFIG.reps_per_cell}`,
+      pass: n === CONFIG.reps_per_cell });
+  }
+  const nb = choice.filter(r => r.block === "baseline").length;
+  C.push({ name: "baseline count", detail: `${nb}/${CONFIG.n_baseline}`,
+    pass: nb === CONFIG.n_baseline });
+  const nf = choice.filter(r => r.block === "filler").length;
+  C.push({ name: "filler count", detail: `${nf}/${CONFIG.n_filler}`,
+    pass: nf === CONFIG.n_filler });
+  const idxs = new Set(choice.map(r => r.trial_idx));
+  C.push({ name: "unique trial indices", detail: `${idxs.size} unique`,
+    pass: idxs.size === choice.length });
+  // decoy trials contain exactly roles A,B,D with correct values
+  let okRoles = true;
+  for (const r of choice.filter(x => x.block.startsWith("d"))) {
+    const roles = [r.opt1_role, r.opt2_role, r.opt3_role].sort().join("");
+    if (roles !== "ABD") okRoles = false;
+    for (const k of [1, 2, 3]) {
+      if (r["opt" + k + "_role"] === "A" &&
+          (r["opt" + k + "_gb"] !== CONFIG.A.gb ||
+           r["opt" + k + "_price"] !== CONFIG.A.price)) okRoles = false;
+      if (r["opt" + k + "_role"] === "B" &&
+          (r["opt" + k + "_gb"] !== CONFIG.B.gb ||
+           r["opt" + k + "_price"] !== CONFIG.B.price)) okRoles = false;
+    }
+  }
+  C.push({ name: "decoy trials: roles A/B/D with correct target values",
+    detail: okRoles ? "all match config" : "MISMATCH", pass: okRoles });
+  // slot balance: role A across trinary trials
+  const tri = choice.filter(x => x.block.startsWith("d"));
+  const slotCount = [0, 0, 0];
+  tri.forEach(r => { for (const k of [1, 2, 3])
+    if (r["opt" + k + "_role"] === "A") slotCount[k - 1]++; });
+  const minPerSlot = Math.floor(tri.length / 6);
+  C.push({ name: "slot balance (target A over decoy trials)",
+    detail: slotCount.join("/") + ` (min ${minPerSlot})`,
+    pass: slotCount.every(n => n >= minPerSlot) });
+  // policy consistency: logged choice matches policy applied to logged options
+  if (ROBOT === "cheapest" || ROBOT === "bigdata") {
+    let ok = 0;
+    for (const r of choice) {
+      const opts = [1, 2, 3].map(k => ({ gb: r["opt" + k + "_gb"],
+        price: r["opt" + k + "_price"] })).filter(o => o.gb !== undefined);
+      const best = ROBOT === "cheapest"
+        ? Math.min(...opts.map(o => o.price)) : Math.max(...opts.map(o => o.gb));
+      const v = ROBOT === "cheapest" ? r.choice_price : r.choice_gb;
+      if (v === best) ok++;
+    }
+    C.push({ name: `policy consistency (${ROBOT})`,
+      detail: `${ok}/${choice.length} trials`, pass: ok === choice.length });
+  }
+  // catch trials: dominant option identifiable and, under cheapest, chosen
+  const nc = choice.filter(r => r.block === "catch").length;
+  C.push({ name: "catch count", detail: `${nc}/${CONFIG.catch_trials.length}`,
+    pass: nc === CONFIG.catch_trials.length });
+  // CSV round-trip
+  const csv = toCSV(), lines = csv.trim().split("\n");
+  C.push({ name: "CSV row count (header + wtp + choice + probe)",
+    detail: `${lines.length - 1} data rows`, pass:
+    lines.length - 1 === CONFIG.wtp_levels.length + choice.length + 1 });
+  const width = lines[0].split(",").length;
+  const okWidth = lines.every(l => l.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).length === width);
+  C.push({ name: "CSV rectangular", detail: `${width} columns`, pass: okWidth });
+  return C;
+}
+
+/* ------------------------------------------------ boot */
+if (ROBOT) runRobot(); else screenIntro();
+</script>
+</body>
+</html>
