@@ -65,7 +65,7 @@
    ===================================================================== */
 
 const CONFIG = {
-  version: "task-v2.1-FROZEN (2026-08-21)",  // v2.1: UI debrand only; design unchanged
+  version: "task-v2.2-FROZEN (2026-08-25)",  // v2.2: intro/outro text only; design unchanged
   study_seed: "decoy-mapping-2026",
   // Targets: TITRATED cohort-indifference pair (pilot n=5, 21 Aug 2026:
   // median switch £20 for 200GB given 100GB@£17; cohort line
@@ -174,15 +174,13 @@ function setBar() { document.getElementById("bar").style.width =
 function screenIntro() {
   main.innerHTML = `
   <div class="notice"><h2>Choosing the best-value plan</h2>
-  <p>This is a study for a course research project. You'll answer a few
-  quick questions about what mobile data is worth to you, then choose the
-  best-value plan from a series of short comparison lists — about 5–10
-  minutes in total. There are no right or wrong answers; choose whichever
-  plan you would actually pick.</p>
-  <p>Taking part is voluntary and you can stop at any time. Your choices
-  are recorded against an anonymous ID and saved as a file on this
-  computer only — nothing is uploaded. Data are used for a course project
-  supervised at the University of Oxford.</p></div>
+  <p>This is a study for a personal research project. You'll answer a few
+  questions about how you value mobile data, then choose the plan you
+  feel is the best value. There are no right or wrong answers.</p>
+  <p>Taking part is voluntary and you can stop at any time, and your
+  choices will be recorded alongside your initials and saved on your own
+  computer, nowhere else. Data will be used for my personal project
+  only.</p></div>
   <p>Your initials:</p>
   <input type="text" id="pid" autocomplete="off" placeholder="e.g. NP">
   <p><label><input type="checkbox" id="consent"> I have read the above and
@@ -205,8 +203,8 @@ function startSession() {
 
 function screenWTP() {
   main.innerHTML = `<h2>Before you start</h2>
-  <p>For each monthly data allowance below, enter the <b>highest monthly
-  price (£)</b> you would personally be willing to pay for a 12-month
+  <p>For each monthly data allowance below, enter the highest monthly
+  price (£) you would personally be willing to pay for a 12-month
   SIM-only plan with unlimited calls &amp; texts.</p>
   <div id="wtprows"></div><button class="btn" id="go">Continue</button>`;
   const holder = document.getElementById("wtprows");
@@ -286,9 +284,8 @@ function screenProbe() {
 }
 
 function screenDone() {
-  main.innerHTML = `<h2>Done — thank you.</h2><p>Your data file
-  <b>decoy_${pid}.csv</b> has been saved to this computer's Downloads.
-  Please send it to Nolan.</p>`;
+  main.innerHTML = `<h2>Done. Thank you.</h2><p>Your data file
+  decoy_${pid}.csv has been saved to this computer's Downloads.</p>`;
 }
 
 /* ------------------------------------------------ robot self-test */
